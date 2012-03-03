@@ -903,6 +903,10 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         resp = self._node_action(node, 'reboot', type=reboot_type)
         return resp.status == httplib.ACCEPTED
 
+    def ex_add_floating_ip(self, node, address):
+        resp self._node_action(node, "addFloatingIp", address=address})
+        return resp.status == httplib.ACCEPTED
+
     def ex_set_password(self, node, password):
         resp = self._node_action(node, 'changePassword', adminPass=password)
         node.extra['password'] = password

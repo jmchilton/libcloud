@@ -350,7 +350,7 @@ class OpenStack_1_0_NodeDriver(OpenStackNodeDriver):
         size = kwargs['size']
 
         attributes = {'xmlns': self.XML_NAMESPACE,
-             'name': name,
+             'name': name,                      
              'imageId': str(image.id),
              'flavorId': str(size.id)}
 
@@ -879,6 +879,9 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         else:
             server_params['name'] = node.name
 
+        if 'key_name' in kwargs:
+            server_params['key_name'] = kwargs.get('key_name')
+
         if 'image' in kwargs:
             server_params['imageRef'] = kwargs.get('image').id
         else:
@@ -904,7 +907,7 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         return resp.status == httplib.ACCEPTED
 
     def ex_add_floating_ip(self, node, address):
-        resp self._node_action(node, "addFloatingIp", address=address})
+        resp = self._node_action(node, "addFloatingIp", address=address)
         return resp.status == httplib.ACCEPTED
 
     def ex_set_password(self, node, password):

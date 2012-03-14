@@ -879,8 +879,8 @@ class OpenStack_1_1_NodeDriver(OpenStackNodeDriver):
         else:
             server_params['name'] = node.name
 
-        if 'key_name' in kwargs:
-            server_params['key_name'] = kwargs.get('key_name')
+        if 'ex_keyname' in kwargs:
+            server_params['key_name'] = kwargs.get('ex_keyname')
 
         if 'image' in kwargs:
             server_params['imageRef'] = kwargs.get('image').id
